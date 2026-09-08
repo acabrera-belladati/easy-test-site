@@ -1,0 +1,14 @@
+{
+  "name": "@easy-poc/scraper",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "scrape": "node src/products.mjs",
+    "scrape:kb": "node src/kb.mjs"
+  },
+  "dependencies": {
+    "playwright": "latest",
+    "robots-parser": "latest"
+  }
+}

@@ -1,0 +1,284 @@
+[
+  {
+    "id": "seed-makita-df333d",
+    "sku": "seed-makita-df333d",
+    "title": "Taladro atornillador inalámbrico 12V 10mm DF333D + 1 batería 1,5 Ah Makita",
+    "brand": "Makita",
+    "sellingPrice": 97990,
+    "listPrice": 97990,
+    "discountPercentage": 0,
+    "imageUrl": null,
+    "images": [],
+    "url": "https://www.easy.cl/search/taladro%2010%20mm",
+    "categoryPath": [
+      "Herramientas",
+      "Herramientas Eléctricas",
+      "Taladros y Atornilladores"
+    ],
+    "groupId": "23010101",
+    "description": "Seed de POC basado en el ejemplo de conversación entregado por el cliente.",
+    "attributes": {
+      "Tipo de producto": "Taladros Atornilladores",
+      "Voltaje": "12V",
+      "Conexiones": "Inalámbrico",
+      "Mandril": "10 mm",
+      "Modelo": "DF333D",
+      "Batería": "1,5 Ah"
+    },
+    "stock": 1,
+    "stockIsAvailabilityProxy": true,
+    "scrapedAt": "2026-08-27T00:00:00Z",
+    "source": "client-pdf-seed"
+  },
+  {
+    "id": "seed-makita-dhp485rfe",
+    "sku": "seed-makita-dhp485rfe",
+    "title": "Taladro percutor inalámbrico DHP485RFE 18V + cargador Makita",
+    "brand": "Makita",
+    "sellingPrice": 259990,
+    "listPrice": 289990,
+    "discountPercentage": 10.35,
+    "imageUrl": null,
+    "images": [],
+    "url": "https://www.easy.cl/search/taladro%20inalambrico%20makita%2018v",
+    "categoryPath": [
+      "Herramientas",
+      "Herramientas Eléctricas",
+      "Taladros y Atornilladores"
+    ],
+    "groupId": "23010101",
+    "description": "Seed de POC basado en el ejemplo de conversación entregado por el cliente.",
+    "attributes": {
+      "Tipo de producto": "Taladros Percutor",
+      "Voltaje": "18V",
+      "Conexiones": "Inalámbrico",
+      "Modelo": "DHP485RFE"
+    },
+    "stock": 1,
+    "stockIsAvailabilityProxy": true,
+    "scrapedAt": "2026-08-27T00:00:00Z",
+    "source": "client-pdf-seed"
+  },
+  {
+    "id": "seed-makita-hp2050h",
+    "sku": "seed-makita-hp2050h",
+    "title": "Taladro percutor 720W 13mm HP2050H Makita",
+    "brand": "Makita",
+    "sellingPrice": 169990,
+    "listPrice": 169990,
+    "discountPercentage": 0,
+    "imageUrl": null,
+    "images": [],
+    "url": "https://www.easy.cl/search/taladro%2013%20mm",
+    "categoryPath": [
+      "Herramientas",
+      "Herramientas Eléctricas",
+      "Taladros y Atornilladores"
+    ],
+    "groupId": "23010101",
+    "description": "Seed de POC basado en el ejemplo de conversación entregado por el cliente.",
+    "attributes": {
+      "Tipo de producto": "Taladros Percutor",
+      "Potencia": "720 W",
+      "Conexiones": "Alámbrico",
+      "Mandril": "13 mm",
+      "Modelo": "HP2050H"
+    },
+    "stock": 1,
+    "stockIsAvailabilityProxy": true,
+    "scrapedAt": "2026-08-27T00:00:00Z",
+    "source": "client-pdf-seed"
+  },
+  {
+    "id": "seed-makita-m0801kb",
+    "sku": "seed-makita-m0801kb",
+    "title": "Taladro percutor reversible 13 mm M0801KB 500W + maleta Makita",
+    "brand": "Makita",
+    "sellingPrice": 61990,
+    "listPrice": 61990,
+    "discountPercentage": 0,
+    "imageUrl": null,
+    "images": [],
+    "url": "https://www.easy.cl/search/atornillador%20electrico",
+    "categoryPath": [
+      "Herramientas",
+      "Herramientas Eléctricas",
+      "Taladros y Atornilladores"
+    ],
+    "groupId": "23010101",
+    "description": "Seed de POC basado en el ejemplo de conversación entregado por el cliente.",
+    "attributes": {
+      "Tipo de producto": "Taladros Percutor",
+      "Potencia": "500 W",
+      "Conexiones": "Alámbrico",
+      "Mandril": "13 mm",
+      "Modelo": "M0801KB",
+      "Incluye": "Maleta"
+    },
+    "stock": 1,
+    "stockIsAvailabilityProxy": true,
+    "scrapedAt": "2026-08-27T00:00:00Z",
+    "source": "client-pdf-seed"
+  },
+  {
+    "id": "seed-makita-dhp485z",
+    "sku": "seed-makita-dhp485z",
+    "title": "Taladro percutor inalámbrico 13 mm 18V DHP485Z Makita",
+    "brand": "Makita",
+    "sellingPrice": 130990,
+    "listPrice": 130990,
+    "discountPercentage": 0,
+    "imageUrl": null,
+    "images": [],
+    "url": "https://www.easy.cl/search/taladro%20inalambrico%20makita%2018v",
+    "categoryPath": [
+      "Herramientas",
+      "Herramientas Eléctricas",
+      "Taladros y Atornilladores"
+    ],
+    "groupId": "23010101",
+    "description": "Seed de POC basado en el ejemplo de conversación entregado por el cliente.",
+    "attributes": {
+      "Tipo de producto": "Taladros Percutor",
+      "Voltaje": "18V",
+      "Conexiones": "Inalámbrico",
+      "Mandril": "13 mm",
+      "Modelo": "DHP485Z"
+    },
+    "stock": 1,
+    "stockIsAvailabilityProxy": true,
+    "scrapedAt": "2026-08-27T00:00:00Z",
+    "source": "client-pdf-seed"
+  },
+  {
+    "id": "seed-makita-dhp453",
+    "sku": "seed-makita-dhp453",
+    "title": "Taladro percutor 13 mm 18V + 1 batería 2Ah + cargador DHP453 Makita",
+    "brand": "Makita",
+    "sellingPrice": 149990,
+    "listPrice": 149990,
+    "discountPercentage": 0,
+    "imageUrl": null,
+    "images": [],
+    "url": "https://www.easy.cl/search/taladro%2013%20mm",
+    "categoryPath": [
+      "Herramientas",
+      "Herramientas Eléctricas",
+      "Taladros y Atornilladores"
+    ],
+    "groupId": "23010101",
+    "description": "Seed de POC basado en el ejemplo de conversación entregado por el cliente.",
+    "attributes": {
+      "Tipo de producto": "Taladros Percutor",
+      "Voltaje": "18V",
+      "Conexiones": "Inalámbrico",
+      "Mandril": "13 mm",
+      "Modelo": "DHP453",
+      "Batería": "2 Ah",
+      "Incluye": "1 batería + cargador"
+    },
+    "stock": 1,
+    "stockIsAvailabilityProxy": true,
+    "scrapedAt": "2026-08-27T00:00:00Z",
+    "source": "client-pdf-seed"
+  },
+  {
+    "id": "seed-makita-dhp487syx2",
+    "sku": "seed-makita-dhp487syx2",
+    "title": "Taladro percutor inalámbrico 18V 13mm DHP487SYX2 + 2 baterías 1.5 Ah Makita",
+    "brand": "Makita",
+    "sellingPrice": 159990,
+    "listPrice": 159990,
+    "discountPercentage": 0,
+    "imageUrl": null,
+    "images": [],
+    "url": "https://www.easy.cl/search/taladro%20inalambrico%20makita%2018v",
+    "categoryPath": [
+      "Herramientas",
+      "Herramientas Eléctricas",
+      "Taladros y Atornilladores"
+    ],
+    "groupId": "23010101",
+    "description": "Seed de POC basado en el ejemplo de conversación entregado por el cliente.",
+    "attributes": {
+      "Tipo de producto": "Taladros Percutor",
+      "Voltaje": "18V",
+      "Conexiones": "Inalámbrico",
+      "Mandril": "13 mm",
+      "Modelo": "DHP487SYX2",
+      "Batería": "2 x 1,5 Ah",
+      "Torque máximo": "40 Nm"
+    },
+    "stock": 1,
+    "stockIsAvailabilityProxy": true,
+    "scrapedAt": "2026-08-27T00:00:00Z",
+    "source": "client-pdf-seed"
+  },
+  {
+    "id": "seed-makita-hp1640",
+    "sku": "seed-makita-hp1640",
+    "title": "Taladro percutor 760W 13mm HP1640 Makita",
+    "brand": "Makita",
+    "sellingPrice": 108990,
+    "listPrice": 108990,
+    "discountPercentage": 0,
+    "imageUrl": null,
+    "images": [],
+    "url": "https://www.easy.cl/search/taladro%2013%20mm",
+    "categoryPath": [
+      "Herramientas",
+      "Herramientas Eléctricas",
+      "Taladros y Atornilladores"
+    ],
+    "groupId": "23010101",
+    "description": "Seed de POC basado en el ejemplo de conversación entregado por el cliente.",
+    "attributes": {
+      "Tipo de producto": "Taladros Percutor",
+      "Potencia": "760 W",
+      "Conexiones": "Alámbrico",
+      "Mandril": "13 mm",
+      "Modelo": "HP1640"
+    },
+    "stock": 1,
+    "stockIsAvailabilityProxy": true,
+    "scrapedAt": "2026-08-27T00:00:00Z",
+    "source": "client-pdf-seed"
+  },
+  {
+    "id": "1249699",
+    "sku": "1249699",
+    "title": "Taladro percutor 450W 10mm GSB 450 RE Bosch",
+    "brand": "Bosch",
+    "sellingPrice": 34990,
+    "listPrice": 34990,
+    "discountPercentage": 0,
+    "imageUrl": "https://easycl.vteximg.com.br/arquivos/ids/4976537/1249699-0000-001.jpg",
+    "images": [
+      "https://easycl.vteximg.com.br/arquivos/ids/4976537/1249699-0000-001.jpg"
+    ],
+    "url": "https://www.easy.cl/taladro-percutor-450w-10mm-gsb-450-re-bosch-1249699/p",
+    "categoryPath": [
+      "Herramientas",
+      "Herramientas Eléctricas",
+      "Taladros y Atornilladores",
+      "Taladros"
+    ],
+    "groupId": "23010101",
+    "description": "Taladro percutor Bosch GSB 450 RE, alámbrico, 450 W y mandril de 10 mm.",
+    "attributes": {
+      "Tipo de producto": "Taladros Percutor",
+      "Potencia": "450 W",
+      "Conexiones": "Alámbrico",
+      "Mandril": "10 mm",
+      "Modelo": "GSB 450 RE",
+      "Velocidades": "3100 RPM",
+      "Peso": "1,2 kg",
+      "Garantía Proveedor": "1 año",
+      "Garantía Mínima Legal": "6 meses"
+    },
+    "stock": 1,
+    "stockIsAvailabilityProxy": true,
+    "scrapedAt": "2026-09-07T00:00:00Z",
+    "source": "public-product-page-seed"
+  }
+]

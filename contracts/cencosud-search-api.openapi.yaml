@@ -1,0 +1,516 @@
+openapi: 3.0.3
+info:
+  title: Easy Chile - Search API
+  description: |
+    API de búsqueda de productos del catálogo Easy Chile.
+    
+    Permite buscar productos por término, filtrar por categoría, marca, precio, color y otros atributos dinámicos.
+    
+    ## Autenticación
+    
+    Todas las requests requieren un header `x-api-key` con la API key proporcionada por el equipo.
+    
+    ## Identificación del consumidor
+    
+    El campo `visitorId` dentro del input debe ser siempre `"ElevenLabs"` para identificar las requests de su integración.
+    
+    ## Límites de uso
+    
+    | Concepto | Valor |
+    |----------|-------|
+    | Rate limit | 10 requests/segundo |
+    | Burst | 20 requests |
+    | Cuota diaria | 10.000 requests |
+  version: 1.0.0
+  contact:
+    name: Equipo Sales AI - Cencosud
+    email: sales-ai@cencosud.com
+
+servers:
+  - url: https://{BASE_URL}/v1
+    description: API de Búsqueda Easy Chile
+    variables:
+      BASE_URL:
+        default: "xxxxxxxxxx.execute-api.us-east-1.amazonaws.com"
+        description: URL base proporcionada por el equipo
+
+security:
+  - ApiKeyAuth: []
+
+paths:
+  /graphql:
+    post:
+      operationId: searchProducts
+      summary: Buscar productos en el catálogo
+      description: |
+        Ejecuta una búsqueda GraphQL sobre el catálogo de Easy Chile.
+        Soporta búsqueda por texto libre, filtros por categoría, marca, precio, color,
+        y atributos dinámicos. Retorna productos con sus atributos, stock, y facets disponibles
+        para refinar la búsqueda.
+      tags:
+        - Search
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/GraphQLRequest"
+            examples:
+              busqueda_simple:
+                summary: Búsqueda simple por término
+                value:
+                  query: "query Search($input: SearchInputDTO!) { search(input: $input) { totalSize correctedQuery products { id title attributes { name stringValues numberValues } skus { id stock } } facets { key name values { value displayName count minValue maxValue } } } }"
+                  variables:
+                    input:
+                      term: "taladro"
+                      filters: []
+                      storeIds: ["easycl"]
+                      salesChannel: ["3"]
+                      visitorId: "ElevenLabs"
+                      applicationId: "34bb8686968a85a272a6c546ddcb9860db1ea14ee72f5207ef0c028280a6e7bc"
+                      sponsoredProducts: false
+                      pagination:
+                        pageSize: 10
+                        page: 1
+              filtro_marca:
+                summary: Filtro por marca
+                value:
+                  query: "query Search($input: SearchInputDTO!) { search(input: $input) { totalSize correctedQuery products { id title attributes { name stringValues numberValues } skus { id stock } } facets { key name values { value displayName count minValue maxValue } } } }"
+                  variables:
+                    input:
+                      term: "refrigerador"
+                      filters:
+                        - key: "BrandName"
+                          stringValues: ["Samsung"]
+                      storeIds: ["easycl"]
+                      salesChannel: ["3"]
+                      visitorId: "ElevenLabs"
+                      applicationId: "34bb8686968a85a272a6c546ddcb9860db1ea14ee72f5207ef0c028280a6e7bc"
+                      sponsoredProducts: false
+                      pagination:
+                        pageSize: 10
+                        page: 1
+              filtro_precio:
+                summary: Filtro por rango de precio
+                value:
+                  query: "query Search($input: SearchInputDTO!) { search(input: $input) { totalSize correctedQuery products { id title attributes { name stringValues numberValues } skus { id stock } } facets { key name values { value displayName count minValue maxValue } } } }"
+                  variables:
+                    input:
+                      term: "sofa"
+                      filters:
+                        - key: "sellingPrice"
+                          numberRange:
+                            min: 100000
+                            max: 500000
+                      storeIds: ["easycl"]
+                      salesChannel: ["3"]
+                      visitorId: "ElevenLabs"
+                      applicationId: "34bb8686968a85a272a6c546ddcb9860db1ea14ee72f5207ef0c028280a6e7bc"
+                      sponsoredProducts: false
+                      sortBy: "price asc"
+                      pagination:
+                        pageSize: 10
+                        page: 1
+              filtros_combinados:
+                summary: Múltiples filtros combinados
+                value:
+                  query: "query Search($input: SearchInputDTO!) { search(input: $input) { totalSize correctedQuery products { id title attributes { name stringValues numberValues } skus { id stock } } facets { key name values { value displayName count minValue maxValue } } } }"
+                  variables:
+                    input:
+                      term: "refrigerador"
+                      filters:
+                        - key: "BrandName"
+                          stringValues: ["Samsung"]
+                        - key: "Color Bucket"
+                          stringValues: ["Negro"]
+                        - key: "sellingPrice"
+                          numberRange:
+                            min: 300000
+                            max: 800000
+                      storeIds: ["easycl"]
+                      salesChannel: ["3"]
+                      visitorId: "ElevenLabs"
+                      applicationId: "34bb8686968a85a272a6c546ddcb9860db1ea14ee72f5207ef0c028280a6e7bc"
+                      sponsoredProducts: false
+                      sortBy: "price asc"
+                      pagination:
+                        pageSize: 10
+                        page: 1
+              filtro_categoria:
+                summary: Filtro por categoría (group_id)
+                value:
+                  query: "query Search($input: SearchInputDTO!) { search(input: $input) { totalSize correctedQuery products { id title attributes { name stringValues numberValues } skus { id stock } } facets { key name values { value displayName count minValue maxValue } } } }"
+                  variables:
+                    input:
+                      term: "taladro"
+                      filters:
+                        - key: "group_id"
+                          stringValues: ["23010101"]
+                      storeIds: ["easycl"]
+                      salesChannel: ["3"]
+                      visitorId: "ElevenLabs"
+                      applicationId: "34bb8686968a85a272a6c546ddcb9860db1ea14ee72f5207ef0c028280a6e7bc"
+                      sponsoredProducts: false
+                      pagination:
+                        pageSize: 10
+                        page: 1
+      responses:
+        "200":
+          description: Búsqueda exitosa
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GraphQLResponse"
+              examples:
+                respuesta_exitosa:
+                  summary: Respuesta con productos
+                  value:
+                    data:
+                      search:
+                        totalSize: 360
+                        correctedQuery: null
+                        products:
+                          - id: "44182"
+                            title: "Taladro percutor 450W 10mm GSB 450 RE Bosch"
+                            attributes:
+                              - name: "sellingPrice"
+                                stringValues: null
+                                numberValues: [24990]
+                              - name: "listPrice"
+                                stringValues: null
+                                numberValues: [34990]
+                              - name: "BrandName"
+                                stringValues: ["Bosch"]
+                                numberValues: null
+                              - name: "image_url"
+                                stringValues: ["https://easycl.vteximg.com.br/arquivos/ids/4976537/1249699-0000-001.jpg"]
+                                numberValues: null
+                              - name: "url"
+                                stringValues: ["https://www.easy.cl/taladro-percutor-450w-10mm-gsb-450-re-bosch-1249699/p"]
+                                numberValues: null
+                              - name: "discountPercentage"
+                                stringValues: null
+                                numberValues: [28.58]
+                            skus:
+                              - id: "46090"
+                                stock: 1
+                        facets:
+                          - key: "BrandName"
+                            name: "Marca"
+                            values:
+                              - value: "Bosch"
+                                displayName: "Bosch"
+                                count: "85"
+                                minValue: null
+                                maxValue: null
+                              - value: "Makita"
+                                displayName: "Makita"
+                                count: "62"
+                                minValue: null
+                                maxValue: null
+        "403":
+          description: API key inválida o ausente
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Forbidden"
+        "429":
+          description: Rate limit excedido
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Too Many Requests"
+
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: x-api-key
+      description: API key proporcionada por el equipo Sales AI
+
+  schemas:
+    GraphQLRequest:
+      type: object
+      required:
+        - query
+        - variables
+      properties:
+        query:
+          type: string
+          description: |
+            Query GraphQL. Usar siempre la named query `Search` con variable `$input`.
+          example: "query Search($input: SearchInputDTO!) { search(input: $input) { totalSize correctedQuery products { id title attributes { name stringValues numberValues } skus { id stock } } facets { key name values { value displayName count minValue maxValue } } } }"
+        variables:
+          type: object
+          required:
+            - input
+          properties:
+            input:
+              $ref: "#/components/schemas/SearchInput"
+
+    SearchInput:
+      type: object
+      required:
+        - term
+        - storeIds
+        - salesChannel
+        - visitorId
+        - applicationId
+      properties:
+        term:
+          type: string
+          description: Término de búsqueda en texto libre
+          example: "taladro"
+        filters:
+          type: array
+          description: Lista de filtros a aplicar
+          items:
+            $ref: "#/components/schemas/SearchFilter"
+          default: []
+        storeIds:
+          type: array
+          items:
+            type: string
+          description: "Identificador de la tienda. Siempre: [\"easycl\"]"
+          example: ["easycl"]
+        salesChannel:
+          type: array
+          items:
+            type: string
+          description: "Canal de venta. Siempre: [\"3\"]"
+          example: ["3"]
+        visitorId:
+          type: string
+          description: "Identificador del consumidor. Siempre: \"ElevenLabs\""
+          example: "ElevenLabs"
+        applicationId:
+          type: string
+          description: Application ID del catálogo
+          example: "34bb8686968a85a272a6c546ddcb9860db1ea14ee72f5207ef0c028280a6e7bc"
+        sponsoredProducts:
+          type: boolean
+          description: Incluir productos patrocinados
+          default: false
+        sortBy:
+          type: string
+          description: |
+            Ordenamiento de resultados. Opciones disponibles:
+            - `"price asc"` - Precio menor a mayor
+            - `"price desc"` - Precio mayor a menor
+            - `"discount desc"` - Mejor descuento
+            - `"relevance desc"` - Recomendados (default)
+          example: "price asc"
+        pagination:
+          $ref: "#/components/schemas/Pagination"
+
+    SearchFilter:
+      type: object
+      required:
+        - key
+      properties:
+        key:
+          type: string
+          description: |
+            Nombre del filtro. Filtros comunes:
+            - `group_id` - Categoría (ID numérico)
+            - `BrandName` - Marca
+            - `Color Bucket` - Color
+            - `sellingPrice` - Precio (usar con numberRange)
+            - Otros filtros dinámicos disponibles en facets de la respuesta
+          example: "BrandName"
+        stringValues:
+          type: array
+          items:
+            type: string
+          description: Valores de texto para el filtro
+          example: ["Bosch"]
+        numberRange:
+          $ref: "#/components/schemas/NumberRange"
+
+    NumberRange:
+      type: object
+      description: Rango numérico para filtros de precio u otros valores numéricos
+      properties:
+        min:
+          type: number
+          description: Valor mínimo del rango
+          example: 100000
+        max:
+          type: number
+          description: Valor máximo del rango
+          example: 500000
+
+    Pagination:
+      type: object
+      properties:
+        pageSize:
+          type: integer
+          description: Cantidad de productos por página (recomendado 10-20)
+          minimum: 1
+          maximum: 50
+          default: 10
+          example: 10
+        page:
+          type: integer
+          description: Número de página (comienza en 1)
+          minimum: 1
+          default: 1
+          example: 1
+
+    GraphQLResponse:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            search:
+              $ref: "#/components/schemas/SearchResult"
+
+    SearchResult:
+      type: object
+      properties:
+        totalSize:
+          type: integer
+          description: Total de productos que coinciden con la búsqueda
+          example: 360
+        correctedQuery:
+          type: string
+          nullable: true
+          description: Query corregida si hubo autocorrección ortográfica
+          example: null
+        products:
+          type: array
+          description: Lista de productos encontrados
+          items:
+            $ref: "#/components/schemas/Product"
+        facets:
+          type: array
+          description: Filtros disponibles para refinar la búsqueda
+          items:
+            $ref: "#/components/schemas/Facet"
+
+    Product:
+      type: object
+      properties:
+        id:
+          type: string
+          description: ID único del producto
+          example: "44182"
+        title:
+          type: string
+          description: Nombre del producto
+          example: "Taladro percutor 450W 10mm GSB 450 RE Bosch"
+        attributes:
+          type: array
+          description: Atributos del producto (precio, marca, imágenes, etc.)
+          items:
+            $ref: "#/components/schemas/ProductAttribute"
+        skus:
+          type: array
+          description: Variantes/SKUs del producto con stock
+          items:
+            $ref: "#/components/schemas/SKU"
+
+    ProductAttribute:
+      type: object
+      description: |
+        Atributo de un producto. Cada atributo tiene un `name` y su valor puede ser
+        `stringValues` (texto) o `numberValues` (numérico), nunca ambos.
+      properties:
+        name:
+          type: string
+          description: |
+            Nombre del atributo. Atributos principales:
+            - `sellingPrice` - Precio de venta actual (CLP)
+            - `listPrice` - Precio lista sin descuento (CLP)
+            - `price` - Precio base (CLP)
+            - `discountPercentage` - Porcentaje de descuento
+            - `BrandName` - Marca
+            - `image_url` - URL de la imagen principal
+            - `images` - Todas las URLs de imágenes
+            - `url` - URL del producto en easy.cl
+            - `RefId` - Código de referencia
+            - `Color Bucket` - Color
+            - `stockLevel` - Estado de stock ("in-stock" / "out-of-stock")
+            - `ProductCategories` - Categorías (JSON string)
+            - `Tipo de producto` - Clasificación
+            - `MetaTagDescription` - Descripción del producto
+          example: "sellingPrice"
+        stringValues:
+          type: array
+          nullable: true
+          items:
+            type: string
+          description: Valor de texto (null si es numérico)
+          example: null
+        numberValues:
+          type: array
+          nullable: true
+          items:
+            type: number
+          description: Valor numérico (null si es texto)
+          example: [24990]
+
+    SKU:
+      type: object
+      properties:
+        id:
+          type: string
+          description: ID del SKU
+          example: "46090"
+        stock:
+          type: integer
+          description: Unidades disponibles en stock
+          example: 1
+
+    Facet:
+      type: object
+      description: |
+        Facet (filtro disponible). Los facets indican qué filtros se pueden aplicar
+        y cuántos resultados tiene cada valor. Usar el `key` del facet como `key` en el filtro.
+      properties:
+        key:
+          type: string
+          description: Identificador del facet (usar como key en filters)
+          example: "BrandName"
+        name:
+          type: string
+          description: Nombre legible del facet
+          example: "Marca"
+        values:
+          type: array
+          items:
+            $ref: "#/components/schemas/FacetValue"
+
+    FacetValue:
+      type: object
+      properties:
+        value:
+          type: string
+          description: Valor del facet (usar en stringValues del filtro)
+          example: "Bosch"
+        displayName:
+          type: string
+          description: Nombre para mostrar
+          example: "Bosch"
+        count:
+          type: string
+          description: Cantidad de productos con este valor
+          example: "85"
+        minValue:
+          type: number
+          nullable: true
+          description: Valor mínimo (para facets numéricos)
+        maxValue:
+          type: number
+          nullable: true
+          description: Valor máximo (para facets numéricos)

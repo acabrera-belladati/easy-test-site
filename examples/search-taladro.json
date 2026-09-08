@@ -1,0 +1,24 @@
+{
+  "query": "query Search($input: SearchInputDTO!) { search(input: $input) { totalSize correctedQuery products { id title attributes { name stringValues numberValues } skus { id stock } } facets { key name values { value displayName count minValue maxValue } } } }",
+  "variables": {
+    "input": {
+      "term": "taladro",
+      "filters": [
+        {
+          "key": "BrandName",
+          "stringValues": ["Makita"]
+        }
+      ],
+      "storeIds": ["easycl"],
+      "salesChannel": ["3"],
+      "visitorId": "ElevenLabs",
+      "applicationId": "34bb8686968a85a272a6c546ddcb9860db1ea14ee72f5207ef0c028280a6e7bc",
+      "sponsoredProducts": false,
+      "sortBy": "relevance desc",
+      "pagination": {
+        "pageSize": 10,
+        "page": 1
+      }
+    }
+  }
+}

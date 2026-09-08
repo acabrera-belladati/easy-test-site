@@ -1,0 +1,2 @@
+# Una URL de producto por línea. El scraper también puede descubrir URLs con --search.
+https://www.easy.cl/taladro-percutor-450w-10mm-gsb-450-re-bosch-1249699/p

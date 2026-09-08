@@ -1,0 +1,24 @@
+{
+  "name": "easy-elevenlabs-poc",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "workspaces": [
+    "apps/api",
+    "apps/web",
+    "apps/scraper"
+  ],
+  "scripts": {
+    "dev": "concurrently -n API,WEB -c auto \"npm run dev -w @easy-poc/api\" \"npm run dev -w @easy-poc/web\"",
+    "dev:api": "npm run dev -w @easy-poc/api",
+    "dev:web": "npm run dev -w @easy-poc/web",
+    "build": "npm run build -w @easy-poc/web",
+    "start": "npm run start -w @easy-poc/api",
+    "scrape": "npm run scrape -w @easy-poc/scraper --",
+    "scrape:kb": "npm run scrape:kb -w @easy-poc/scraper --",
+    "test": "npm run test -w @easy-poc/api"
+  },
+  "devDependencies": {
+    "concurrently": "latest"
+  }
+}

@@ -1,0 +1,27 @@
+services:
+  - type: web
+    name: easy-elevenlabs-poc
+    runtime: node
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_VERSION
+        value: "22"
+      - key: ENFORCE_MOCK_API_KEY
+        value: "true"
+      - key: MOCK_API_KEY
+        generateValue: true
+      - key: ELEVENLABS_API_KEY
+        sync: false
+      - key: ELEVENLABS_AGENT_ID
+        sync: false
+      - key: ELEVENLABS_ENVIRONMENT
+        value: production
+      - key: USE_REAL_CENCOSUD_API
+        value: "false"
+      - key: CENCOSUD_SEARCH_BASE_URL
+        sync: false
+      - key: CENCOSUD_SEARCH_API_KEY
+        sync: false
