@@ -16,7 +16,7 @@ services:
       - key: ENFORCE_MOCK_API_KEY
         value: "true"
       - key: MOCK_API_KEY
-        generateValue: true
+        sync: false
       - key: ELEVENLABS_API_KEY
         sync: false
       - key: ELEVENLABS_AGENT_ID
