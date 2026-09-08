@@ -8,6 +8,20 @@
 body { margin: 0; background: #f6f6f6; }
 button, input { font: inherit; }
 button { cursor: pointer; }
+.access-page { min-height:100dvh; display:grid; place-items:center; padding:24px; background:radial-gradient(circle at 50% 0,#fff 0,#f5f5f5 48%,#ededed 100%); }
+.access-card { width:min(100%,400px); padding:38px; border-radius:18px; background:white; border:1px solid #e5e5e5; box-shadow:0 24px 70px rgba(35,35,35,.13); }
+.access-logo { color:#d51f2b; font-size:48px; font-weight:900; font-style:italic; letter-spacing:-4px; line-height:1; margin-bottom:30px; }
+.access-badge { display:inline-flex; padding:5px 8px; border-radius:999px; background:#fff0f1; color:#bd1722; font-size:10px; font-weight:800; letter-spacing:.1em; }
+.access-card h1 { margin:12px 0 7px; font-size:27px; letter-spacing:-.6px; }
+.access-card > p { margin:0 0 25px; color:#707070; font-size:14px; line-height:1.5; }
+.access-card form { display:flex; flex-direction:column; gap:9px; }
+.access-card label { font-size:12px; font-weight:750; }
+.access-card input { height:46px; border:1px solid #ccc; border-radius:7px; padding:0 12px; outline:none; }
+.access-card input:focus { border-color:#d51f2b; box-shadow:0 0 0 3px rgba(213,31,43,.1); }
+.access-card button { height:46px; margin-top:5px; border:0; border-radius:7px; background:#d51f2b; color:white; font-weight:800; }
+.access-card button:disabled { cursor:default; opacity:.6; }
+.access-error { padding:10px 11px; border:1px solid #ffc9cd; border-radius:7px; background:#fff2f3; color:#a91d27; font-size:12px; line-height:1.4; }
+.access-checking { margin:0 !important; color:#777; }
 .top-strip { height: 30px; display:flex; align-items:center; justify-content:center; background:#f1f1f1; font-size:12px; color:#555; }
 .site-header { height: 78px; background:#d51f2b; display:flex; align-items:center; gap:28px; padding:0 42px; color:white; position:sticky; top:0; z-index:5; box-shadow:0 2px 12px rgba(0,0,0,.08); }
 .brand-logo { font-size:38px; font-weight:900; letter-spacing:-3px; font-style:italic; line-height:1; }
@@ -118,6 +132,7 @@ button { cursor: pointer; }
   .site-product-grid { grid-template-columns:repeat(2,1fr); }
 }
 @media (max-width: 560px) {
+  .access-card { padding:30px 24px; }
   .site-main { padding:15px 12px 100px; }
   .hero-banner { padding:28px 22px; min-height:245px; }
   .hero-banner h1 { font-size:34px; }

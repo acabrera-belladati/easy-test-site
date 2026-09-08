@@ -19,7 +19,10 @@ Start: npm start
 ELEVENLABS_API_KEY
 ELEVENLABS_AGENT_ID
 MOCK_API_KEY
+POC_ACCESS_PASSWORD
 ```
+
+`POC_ACCESS_PASSWORD` es la contraseña única de ingreso al sitio. El Blueprint genera además un `POC_SESSION_SECRET` para firmar las cookies de sesión.
 
 5. Obtener una URL del estilo:
 

@@ -9,6 +9,10 @@ services:
     envVars:
       - key: NODE_VERSION
         value: "22"
+      - key: POC_ACCESS_PASSWORD
+        sync: false
+      - key: POC_SESSION_SECRET
+        generateValue: true
       - key: ENFORCE_MOCK_API_KEY
         value: "true"
       - key: MOCK_API_KEY

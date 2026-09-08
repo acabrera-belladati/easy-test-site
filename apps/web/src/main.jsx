@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { ConversationProvider } from "@elevenlabs/react";
 import { App } from "./App.jsx";
+import { AccessGate } from "./components/AccessGate.jsx";
 import { AssistantRuntimeProvider, useAssistantRuntime } from "./state/AssistantRuntime.jsx";
 import "./styles.css";
 
@@ -25,10 +26,12 @@ function ElevenLabsBridge({ children }) {
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <AssistantRuntimeProvider>
-      <ElevenLabsBridge>
-        <App />
-      </ElevenLabsBridge>
-    </AssistantRuntimeProvider>
+    <AccessGate>
+      <AssistantRuntimeProvider>
+        <ElevenLabsBridge>
+          <App />
+        </ElevenLabsBridge>
+      </AssistantRuntimeProvider>
+    </AccessGate>
   </React.StrictMode>
 );

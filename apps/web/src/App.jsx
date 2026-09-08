@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { AssistantWidget } from "./components/AssistantWidget.jsx";
 import { ProductCard } from "./components/ProductCard.jsx";
+import { useAccess } from "./components/AccessGate.jsx";
 
 const categoryTiles = [
   ["Herramientas", "Taladros, sierras y más", "🛠️"],
@@ -12,6 +13,7 @@ const categoryTiles = [
 ];
 
 export function App() {
+  const { logout } = useAccess();
   const [sampleProducts, setSampleProducts] = useState([]);
   const [search, setSearch] = useState("");
 
@@ -43,7 +45,7 @@ export function App() {
         </form>
         <nav className="header-actions">
           <button><span>⌖</span>Tu ubicación</button>
-          <button><span>♙</span>Inicia sesión</button>
+          <button type="button" onClick={logout}><span>♙</span>Salir</button>
           <button className="cart-button">🛒</button>
         </nav>
       </header>

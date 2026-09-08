@@ -57,6 +57,14 @@ cp .env.example .env
 
 El repo incluye un **seed pequeño** para poder probar el mock inmediatamente. No debe considerarse catálogo actual ni productivo.
 
+Definí una contraseña única para acceder al sitio en `.env`:
+
+```env
+POC_ACCESS_PASSWORD=una-clave-para-el-demo
+```
+
+La sesión se guarda en una cookie `HttpOnly` durante 7 días. No hay usuarios ni registro. Podés definir también `POC_SESSION_SECRET` para invalidar sesiones independientemente de la contraseña.
+
 ```bash
 npm run dev
 ```

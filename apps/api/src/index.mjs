@@ -7,6 +7,7 @@ import { mockSearchRouter } from "./routes/mock-search.mjs";
 import { toolsRouter } from "./routes/tools.mjs";
 import { catalogRouter } from "./routes/catalog.mjs";
 import { elevenLabsRouter } from "./routes/elevenlabs.mjs";
+import { requireSiteAuth, siteAuthRouter } from "./middleware/site-auth.mjs";
 
 const rootEnv = path.resolve(import.meta.dirname, "../../../.env");
 dotenv.config({ path: rootEnv });
@@ -28,6 +29,8 @@ app.get("/health", (_req, res) => {
   });
 });
 
+app.use(siteAuthRouter);
+app.use("/api", requireSiteAuth);
 app.use(mockSearchRouter);
 app.use(toolsRouter);
 app.use(catalogRouter);
