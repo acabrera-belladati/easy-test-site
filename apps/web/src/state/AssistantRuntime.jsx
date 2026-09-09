@@ -8,13 +8,7 @@ import React, {
 
 const AssistantRuntimeContext = createContext(null);
 
-const initialMessages = [
-  {
-    id: "welcome",
-    role: "assistant",
-    text: "¡Hola! Soy tu asistente Easy. Contame qué necesitás para tu proyecto y te ayudo a encontrar opciones."
-  }
-];
+const initialMessages = [];
 
 const hiddenComparisonLabels = new Set([
   "image_url",
@@ -128,7 +122,7 @@ function normalizeComparisonProducts(products) {
 }
 
 export function AssistantRuntimeProvider({ children }) {
-  const [messages, setMessages] = useState(initialMessages);
+  const [messages, setMessages] = useState([]);
   const [products, setProducts] = useState([]);
   const [presentation, setPresentation] = useState("cards");
   const [lastError, setLastError] = useState(null);
