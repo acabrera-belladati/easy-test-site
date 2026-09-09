@@ -14,8 +14,8 @@
     "dev:web": "npm run dev -w @easy-poc/web",
     "build": "npm run build -w @easy-poc/web",
     "start": "npm run start -w @easy-poc/api",
-    "scrape": "npm run scrape -w @easy-poc/scraper --",
-    "scrape:kb": "npm run scrape:kb -w @easy-poc/scraper --",
+    "scrape": "node apps/scraper/src/products.mjs",
+    "scrape:kb": "node apps/scraper/src/kb.mjs",
     "test": "npm run test -w @easy-poc/api"
   },
   "devDependencies": {

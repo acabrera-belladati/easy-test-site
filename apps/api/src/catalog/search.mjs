@@ -91,10 +91,51 @@ function relevance(product, term) {
 
 function matchesTerm(product, term) {
   const normalizedTerm = normalize(term);
-  if (!normalizedTerm) return true;
+
+  if (!normalizedTerm) {
+    return true;
+  }
+
   const haystack = searchableText(product);
-  const tokens = normalizedTerm.split(/\s+/).filter(Boolean);
-  return tokens.every((token) => haystack.includes(token));
+
+  const stopwords = new Set([
+    "quiero",
+    "quisiera",
+    "necesito",
+    "busco",
+    "dame",
+    "mostrame",
+    "mostrar",
+    "un",
+    "una",
+    "unos",
+    "unas",
+    "el",
+    "la",
+    "los",
+    "las",
+    "de",
+    "del",
+    "para",
+    "por",
+    "con",
+    "sin",
+    "me",
+    "que"
+  ]);
+
+  const tokens = normalizedTerm
+    .split(/\s+/)
+    .filter(Boolean)
+    .filter((token) => !stopwords.has(token));
+
+  if (!tokens.length) {
+    return true;
+  }
+
+  return tokens.some(
+    (token) => haystack.includes(token)
+  );
 }
 
 function sortProducts(items, sortBy, term) {
