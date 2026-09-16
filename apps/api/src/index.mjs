@@ -20,11 +20,16 @@ app.use(cors({ origin: true, allowedHeaders: ["Content-Type", "x-api-key"] }));
 app.use(express.json({ limit: "1mb" }));
 
 app.get("/health", (_req, res) => {
+  const realCencosudEnabled = String(process.env.USE_REAL_CENCOSUD_API ?? "false").toLowerCase() === "true";
   res.json({
     status: "ok",
     service: "easy-elevenlabs-poc",
-    mockCatalog: true,
-    realCencosudEnabled: String(process.env.USE_REAL_CENCOSUD_API ?? "false").toLowerCase() === "true",
+    mockCatalog: !realCencosudEnabled,
+    realCencosudEnabled,
+    realCencosudConfigured: Boolean(
+      (process.env.CENCOSUD_SEARCH_URL || process.env.CENCOSUD_SEARCH_BASE_URL) &&
+      process.env.CENCOSUD_SEARCH_API_KEY
+    ),
     elevenLabsConfigured: Boolean(process.env.ELEVENLABS_API_KEY && process.env.ELEVENLABS_AGENT_ID)
   });
 });

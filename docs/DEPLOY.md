@@ -20,9 +20,10 @@ ELEVENLABS_API_KEY
 ELEVENLABS_AGENT_ID
 MOCK_API_KEY
 POC_ACCESS_PASSWORD
+CENCOSUD_SEARCH_API_KEY
 ```
 
-`POC_ACCESS_PASSWORD` es la contraseña única de ingreso al sitio. El Blueprint genera además un `POC_SESSION_SECRET` para firmar las cookies de sesión.
+`POC_ACCESS_PASSWORD` es la contraseña única de ingreso al sitio. El Blueprint genera además un `POC_SESSION_SECRET` para firmar las cookies de sesión. La URL, el application ID y el resto de la configuración no secreta de Cencosud ya están definidos en `render.yaml`.
 
 5. Obtener una URL del estilo:
 
@@ -38,6 +39,8 @@ https://easy-elevenlabs-poc.onrender.com/health        -> health
 https://easy-elevenlabs-poc.onrender.com/v1/graphql    -> mock Cencosud
 https://easy-elevenlabs-poc.onrender.com/tools/search-products -> tool ElevenLabs
 ```
+
+Con la configuración incluida, `/tools/search-products` consulta la API GraphQL real. `/v1/graphql` se conserva como mock local para pruebas de contrato.
 
 ## Railway
 

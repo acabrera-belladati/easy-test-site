@@ -177,17 +177,20 @@ Start command:
 npm start
 ```
 
-## Cambio a la API real de Cencosud
+## API real de Cencosud
 
-Cuando Cencosud entregue `BASE_URL` y `x-api-key`:
+El adapter acepta la URL completa del endpoint GraphQL y mantiene la credencial sólo en el backend:
 
 ```env
 USE_REAL_CENCOSUD_API=true
-CENCOSUD_SEARCH_BASE_URL=https://.../v1
+CENCOSUD_SEARCH_URL=https://6gdmad8bye.execute-api.us-east-1.amazonaws.com/v1/graphql
 CENCOSUD_SEARCH_API_KEY=...
+CENCOSUD_SEARCH_USER_AGENT=ElevenLabs/1.0
 ```
 
 El endpoint `POST /tools/search-products` usará el adapter real sin que el agente ni el frontend tengan que cambiar de contrato.
+
+`CENCOSUD_SEARCH_BASE_URL=https://.../v1` continúa soportada por compatibilidad; si se definen ambas variables, `CENCOSUD_SEARCH_URL` tiene prioridad.
 
 ## Contrato original
 

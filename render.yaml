@@ -24,7 +24,15 @@ services:
       - key: ELEVENLABS_ENVIRONMENT
         value: production
       - key: USE_REAL_CENCOSUD_API
-        value: "false"
+        value: "true"
+      - key: CENCOSUD_SEARCH_URL
+        value: https://6gdmad8bye.execute-api.us-east-1.amazonaws.com/v1/graphql
+      - key: CENCOSUD_SEARCH_USER_AGENT
+        value: ElevenLabs/1.0
+      - key: CENCOSUD_SEARCH_TIMEOUT_MS
+        value: "10000"
+      - key: CENCOSUD_APPLICATION_ID
+        value: 34bb8686968a85a272a6c546ddcb9860db1ea14ee72f5207ef0c028280a6e7bc
       - key: CENCOSUD_SEARCH_BASE_URL
         sync: false
       - key: CENCOSUD_SEARCH_API_KEY
